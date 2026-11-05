@@ -1,5 +1,8 @@
-const bird = { species: "Kestrel" };
-console.log(bird.species);
+let myName = "Paul";
 
-bird.species = "Striated Caracara";
-console.log(bird.species);
+myName = "Chris";
+
+const section = document.querySelector("section");
+const para = document.createElement("p");
+para.textContent = myName;
+section.appendChild(para);
