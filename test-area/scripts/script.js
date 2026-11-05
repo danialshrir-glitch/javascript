@@ -1,11 +1,14 @@
-const canvas = document.getElementById("my-canvas");
-const para = document.querySelector("p");
-const ctx = canvas.getContext("2d");
+const btn = document.querySelector("button");
+const txt = document.querySelector("p");
 
-let x = 400 / 2 - 100;
-let y = 2 * x;
+btn.addEventListener("click", updateBtn);
 
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = "green";
-ctx.fillRect(10, 10, x, y);
-para.textContent = `The rectangle is ${x}px wide and ${y}px high.`;
+function updateBtn() {
+    if (btn.textContent === "Start machine") {
+        btn.textContent = "Stop machine";
+        txt.textContent = "The machine has started!";
+    } else {
+        btn.textContent = "Start machine";
+        txt.textContent = "The machine is stopped.";
+    }
+}
