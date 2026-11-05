@@ -3,11 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Example website</title>
-        <link rel="stylesheet" href="styles/style.css" />
-        <script src="scripts/script.js" defer></script>
+        <title>Apply JavaScript Example</title>
     </head>
     <body>
-        <button>Player 1: Chris</button>
+        <button>Click me</button>
+        <script>
+            function createParagraph() {
+                const para = document.createElement("p");
+                para.textContent = "You clicked the button!";
+                document.body.appendChild(para);
+            }
+
+            const buttons = document.querySelectorAll("button");
+
+            for (const button of buttons) {
+                button.addEventListener("click", createParagraph);
+            }
+        </script>
     </body>
 </html>
