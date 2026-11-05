@@ -1,12 +1,11 @@
-let myName = "Default";
-myName = "Chris";
+const canvas = document.getElementById("my-canvas");
+const para = document.querySelector("p");
+const ctx = canvas.getContext("2d");
 
-let myAge = 42;
+let x = 400 / 2 - 100;
+let y = 2 * x;
 
-const section = document.querySelector("section");
-const para1 = document.createElement("p");
-const para2 = document.createElement("p");
-para1.textContent = myName;
-para2.textContent = `In 20 years, I will be ${myAge + 20}`;
-section.appendChild(para1);
-section.appendChild(para2);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, x, y);
+para.textContent = `The rectangle is ${x}px wide and ${y}px high.`;
