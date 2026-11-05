@@ -1,7 +1,11 @@
-let myName;
-let myAge;
+let myAge = 17;
 
-myName = "Chris";
-myAge = 37;
+let dolphinGoodbye = "So long and thanks for all the fish";
 
-let myDog = "Rover";
+let iAmAlive = true;
+let test = 6 < 3;
+
+let myNameArray = ["Chris", "Bob", "Jim"];
+let myNumberArray = [10, 15, 40];
+
+let dog = { name: "Spot", breed: "Dalmatian" };
