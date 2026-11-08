@@ -1,16 +1,13 @@
 const list = document.querySelector("ul");
-const greetings = [
-    "Happy birthday!",
-    "Merry Christmas my love",
-    "A happy Christmas to all the family",
-    "You're all I want for Christmas",
-    "Get well soon"
-];
+const cities = ["lonDon", "ManCHESTer", "BiRmiNGHAM", "liVERpoOL"];
 
-for (const greeting of greetings) {
-    if (greeting.includes("Christmas")) {
-        const listItem = document.createElement("li");
-        listItem.textContent = greeting;
-        list.appendChild(listItem);
-    }
+for (const city of cities) {
+    const loweredCity = city.toLowerCase();
+    const firstLetter = loweredCity[0];
+    const finalResult = loweredCity.replace(firstLetter, firstLetter.toUpperCase());
+
+    const result = finalResult;
+    const listItem = document.createElement("li");
+    listItem.textContent = result;
+    list.appendChild(listItem);
 }
