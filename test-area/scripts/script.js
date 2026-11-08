@@ -1,16 +1,14 @@
-const quote = "I do not like green eggs and ham. I do not like them, Sam-I-Am.";
-const substring = "green eggs and ham";
+const quote = "I dO nOT lIke gREen eGgS anD HAM";
 
-const quoteLength = quote.length;
+const firstLetter = quote[0];
+const rest = quote.slice(1).toLowerCase();
+const hatedFood = "pickled onions";
 
-const index = quote.indexOf(substring);
-const revisedQuote = `${quote.slice(0, index + substring.length + 1)}`;
+let fixedQuote = `${firstLetter}${rest}`;
+fixedQuote = fixedQuote.replace("green eggs with ham", hatedFood);
+const finalQuote = `${fixedQuote}.`;
 
 const section = document.querySelector("section");
-section.innerHTML = " ";
 const para1 = document.createElement("p");
-para1.textContent = `The quote is ${quoteLength} characters long.`;
-const para2 = document.createElement("p");
-para2.textContent = revisedQuote;
+para1.textContent = finalQuote;
 section.appendChild(para1);
-section.appendChild(para2);
