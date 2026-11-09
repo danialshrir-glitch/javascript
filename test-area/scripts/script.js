@@ -1,27 +1,19 @@
-const myArray = [
-    "Ryu",
-    "Ken",
-    "Chun-Li",
-    "Cammy",
-    "Guile",
-    "Sakura",
-    "Sagat",
-    "Juri"
-];
+const birds = ["Parrots", "Falcons", "Eagles", "Emus", "Caracaras", "Egrets"];
 
-myArray.pop();
+const eaglesIndex = birds.indexOf("Eagles");
+if (eaglesIndex > -1) {
+    birds.splice(eaglesIndex, 1);
+};
 
-myArray.push("Zangief");
-myArray.push("Ibuki");
+const eBirds = [];
 
-myArray.forEach((element, index) => {
-    const newElement = `${element} (${index})`;
-    myArray[index] = newElement;
-});
-
-const myString = myArray.join(" - ");
+for (const bird of birds) {
+    if (bird.startsWith("E")) {
+        eBirds.push(bird);
+    };
+};
 
 const section = document.querySelector("section");
 const para1 = document.createElement("p");
-para1.textContent = myString;
+para1.textContent = eBirds;
 section.appendChild(para1);
