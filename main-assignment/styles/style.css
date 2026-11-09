@@ -86,3 +86,55 @@ header .separator #header-navigation ul li button:focus {
 #home-page h1 {
     color: rgb(65, 38, 38);
 }
+
+#cards-creation-deletion-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#cards-creation-deletion-page h1 {
+    color: rgb(65, 38, 38);
+}
+
+#cards-filtering-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#cards-filtering-page h1 {
+    color: rgb(65, 38, 38);
+}
+
+#algorithms-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#algorithms-page h1,
+#algorithms-page h2 {
+    color: rgb(65, 38, 38);
+}
+
+#algorithms-page .separator {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+}
+
+#algorithms-page .separator #algorithms-1 {
+    float: left;
+}
