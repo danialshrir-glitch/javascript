@@ -14,10 +14,10 @@ myArray.pop();
 myArray.push("Zangief");
 myArray.push("Ibuki");
 
-for (const name of myArray) {
-    const nameIndex = myArray.indexOf(name);
-    myArray[nameIndex] = `${name} (${nameIndex})`;
-};
+myArray.forEach((element, index) => {
+    const newElement = `${element} (${index})`;
+    myArray[index] = newElement;
+});
 
 const myString = myArray.join(" - ");
 
