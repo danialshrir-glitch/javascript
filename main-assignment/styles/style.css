@@ -126,15 +126,47 @@ header .separator #header-navigation ul li button:focus {
 
 #algorithms-page .separator {
     position: relative;
+    width: fit-content;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    overflow: hidden;
-    justify-content: space-between;
-    align-items: center;
-    width: max-content;
+    flex-direction: row;
+    min-width: 100%;
+    padding: 20px;
 }
 
 #algorithms-page .separator #algorithms-1 {
+    position: relative;
+    padding: 20px;
+    margin-left: 30px;
     float: left;
+}
+
+#algorithms-page .separator #algorithms-2 {
+    margin-left: auto;
+    margin-right: 30px;
+    padding: 20px;
+}
+
+#recursion-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#recursion-page h1 {
+    color: rgb(65, 38, 38);
+}
+
+#tic-tac-toe-game {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+#tic-tac-toe-game h1 {
+    color: rgb(65, 38, 38);
 }
