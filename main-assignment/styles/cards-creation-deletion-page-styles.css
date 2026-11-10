@@ -1,0 +1,12 @@
+#cards-creation-deletion-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#cards-creation-deletion-page h1 {
+    color: rgb(65, 38, 38);
+}
