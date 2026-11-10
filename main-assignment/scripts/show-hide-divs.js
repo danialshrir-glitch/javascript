@@ -8,7 +8,6 @@ const hidePreviousShowNew = e => {
     for (const button of navBtnsList) {
         const curButtonId = button.getAttribute("id");
         const pageId = curButtonId.slice(PAGE_ID_HEADER_LEN);
-
         const matchingElement = document.getElementById(pageId);
         matchingElement.style.display = 
             (curButtonId === curId) ? "block" : "none";
