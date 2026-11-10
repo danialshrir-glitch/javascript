@@ -33,7 +33,7 @@ function updateDate() {
 
     const curDate = `${day}/${month}/${year}`;
     dateElement = document.getElementById("date");
-    dateElement.textContent = curDate
+    dateElement.textContent = curDate;
 };
 
 updateClock();
