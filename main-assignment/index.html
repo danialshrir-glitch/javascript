@@ -4,8 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JavaScript Experimenting Site</title>
-        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/general-styles.css" />
         <script src="scripts/home-page-script.js" defer></script>
+        <script src="scripts/show-hide-divs.js" defer></script>
     </head>
     <body>
         <header>
@@ -16,12 +17,12 @@
                 <div id="header-navigation">
                     <nav>
                         <ul>
-                            <li><button>Home</button></li>
-                            <li><button>Cards creation/deletion</button></li>
-                            <li><button>Cards filtering</button></li>
-                            <li><button>Algorithms</button></li>
-                            <li><button>Recursion</button></li>
-                            <li><button>Tic-Tac-Toe</button></li>
+                            <li><button id="show-home-page">Home</button></li>
+                            <li><button id="show-cards-creation-deletion-page">Cards creation/deletion</button></li>
+                            <li><button id="show-cards-filtering-page">Cards filtering</button></li>
+                            <li><button id="show-algorithms-page">Algorithms</button></li>
+                            <li><button id="show-recursion-page">Recursion</button></li>
+                            <li><button id="show-tic-tac-toe-page">Tic-Tac-Toe</button></li>
                         </ul>
                     </nav>
                 </div>
@@ -115,9 +116,9 @@
             </div>
         </div>
 
-        <div id="tic-tac-toe-game">
+        <div id="tic-tac-toe-page">
             <h1>Tic-Tac-Toe</h1>
-            <div class="tic-tac-toe-main"></div>
+            <div class="tic-tac-toe-game"></div>
         </div>
     </body>
 </html>
