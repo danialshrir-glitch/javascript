@@ -17,6 +17,8 @@ const ALLOWED_NAME_CHARS = /^[a-zA-Z 0-9\s\.\']+$/;
 const cardCreationButton = document.querySelector("#cards-creation-deletion-page button");
 const creationDeletionForm = document.querySelector("#cards-creation-deletion-page form")
 
+let count = 0;
+
 function validateEmail(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^/s@]+$/;
     return pattern.test(String(email));
@@ -83,9 +85,11 @@ const createNewCard = () => {
         parentNode.removeChild(nextSibling);
     };
 
+    count++;
     const section = document.getElementById("all-cards");
     const cardBox = document.createElement("div");
-    cardBox.id = "card";
+    cardBox.className = "card";
+    cardBox.id = `card-${count}`;
     cardBox.style.border = "2px solid black";
     cardBox.style.borderRadius = "10px";
     cardBox.style.width = "fit-content";
@@ -116,6 +120,9 @@ const createNewCard = () => {
     delBtn.style.borderRadius = "10px";
     delBtn.style.display = "none";
     delBtn.textContent = "X";
+
+    const cardId = cardBox.id;
+    delBtn.addEventListener("click", () => deleteCard(cardId));
     
     cardBox.appendChild(delBtn);
     cardBox.addEventListener("mouseleave", () => {
@@ -125,6 +132,11 @@ const createNewCard = () => {
         delBtn.style.display = "block";
     });
     section.appendChild(cardBox);
+};
+
+const deleteCard = (cardId) => {
+    const requestedCard = document.getElementById(cardId);
+    requestedCard.remove();
 };
 
 cardCreationButton.addEventListener("click", createNewCard);
