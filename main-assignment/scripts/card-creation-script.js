@@ -83,12 +83,6 @@ const createNewCard = () => {
         parentNode.removeChild(nextSibling);
     };
 
-    const dict = {
-        "name": fullName,
-        "email": email
-    }
-    const dictstring = JSON.stringify(dict);
-
     const section = document.getElementById("all-cards");
     const cardBox = document.createElement("div");
     cardBox.id = "card";
@@ -102,6 +96,7 @@ const createNewCard = () => {
     cardBox.style.marginRight = "10px";
     cardBox.style.justifyContent = "center";
     cardBox.style.alignItems = "center";
+    cardBox.style.position = "relative";
     
     const nameField = document.createElement("p");
     const emailField = document.createElement("p");
@@ -109,6 +104,26 @@ const createNewCard = () => {
     emailField.textContent = `Email: ${email}`;
     cardBox.appendChild(nameField);
     cardBox.appendChild(emailField);
+
+    const delBtn = document.createElement("button");
+    delBtn.style.color = "red";
+    delBtn.style.position = "absolute";
+    delBtn.style.top = "0";
+    delBtn.style.right = "0";
+    delBtn.style.cursor = "pointer";
+    delBtn.style.backgroundColor = "transparent";
+    delBtn.style.border = "2px solid black";
+    delBtn.style.borderRadius = "10px";
+    delBtn.style.display = "none";
+    delBtn.textContent = "X";
+    
+    cardBox.appendChild(delBtn);
+    cardBox.addEventListener("mouseleave", () => {
+        delBtn.style.display = "none";
+    });
+    cardBox.addEventListener("mouseenter", () => {
+        delBtn.style.display = "block";
+    });
     section.appendChild(cardBox);
 };
 
