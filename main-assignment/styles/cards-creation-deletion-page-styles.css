@@ -10,3 +10,12 @@
 #cards-creation-deletion-page h1 {
     color: rgb(65, 38, 38);
 }
+
+#cards-creation-deletion-page form {
+    margin-bottom: 10px;
+}
+
+#cards-creation-deletion-page section {
+    display: flex;
+    flex-wrap: wrap;
+}

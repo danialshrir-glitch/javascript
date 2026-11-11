@@ -34,6 +34,15 @@ function validateName(name) {
     return nameLen >= MIN_NAME_LEN && ALLOWED_NAME_CHARS.test(name);
 };
 
+function download(content, fileName, contentType) {
+    const a = document.createElement("a");
+    const file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+    a.remove();
+};
+
 const createNewCard = () => {
     let fullName = document.getElementById("full-name").value;
     const email = document.getElementById("email").value;
@@ -73,6 +82,34 @@ const createNewCard = () => {
     if (nextSibling instanceof Element) {
         parentNode.removeChild(nextSibling);
     };
+
+    const dict = {
+        "name": fullName,
+        "email": email
+    }
+    const dictstring = JSON.stringify(dict);
+
+    const section = document.getElementById("all-cards");
+    const cardBox = document.createElement("div");
+    cardBox.id = "card";
+    cardBox.style.border = "2px solid black";
+    cardBox.style.borderRadius = "10px";
+    cardBox.style.width = "fit-content";
+    cardBox.style.height = "fit-content";
+    cardBox.style.inlineSize = "fit-content";
+    cardBox.style.blockSize = "fit-content";
+    cardBox.style.marginBottom = "10px";
+    cardBox.style.marginRight = "10px";
+    cardBox.style.justifyContent = "center";
+    cardBox.style.alignItems = "center";
+    
+    const nameField = document.createElement("p");
+    const emailField = document.createElement("p");
+    nameField.textContent = `Name: ${fullName}`;
+    emailField.textContent = `Email: ${email}`;
+    cardBox.appendChild(nameField);
+    cardBox.appendChild(emailField);
+    section.appendChild(cardBox);
 };
 
 cardCreationButton.addEventListener("click", createNewCard);
