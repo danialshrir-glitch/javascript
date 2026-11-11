@@ -23,8 +23,8 @@ function updateDate() {
     const myDate = new Date();
 
     let [day, month, year] = [
-        myDate.getDay(),
-        myDate.getMonth(),
+        myDate.getDate(),
+        myDate.getMonth() + 1,
         myDate.getFullYear()
     ];
 
