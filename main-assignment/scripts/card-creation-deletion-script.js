@@ -19,6 +19,13 @@ const creationDeletionForm = document.querySelector("#cards-creation-deletion-pa
 
 let count = 0;
 
+const boxesSection = document.getElementById("all-cards");
+const allCards = boxesSection.querySelectorAll("div");
+
+if (allCards) {
+    count = allCards.length;
+};
+
 function validateEmail(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^/s@]+$/;
     return pattern.test(String(email));
@@ -52,8 +59,8 @@ function saveDataFromCards(className) {
         const email = emailPara.slice(colonEmailIndex + 2);
 
         const cardData = {
-            "name": name,
-            "email": email
+            name: name,
+            email: email
         };
         cardsDataArray.push(cardData);
     };
