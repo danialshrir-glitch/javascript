@@ -191,7 +191,9 @@ function show10CardsData(cards) {
         nameField.textContent = `Name: ${displayName}`;
         const isAdmin = admin ? "Yes" : "No";
         adminField.textContent = `Is an admin? ${isAdmin}`;
-        gradesField.textContent = `Grades: ${grades}`;
+
+        const displayGrades = grades.join(", ");
+        gradesField.textContent = `Grades: ${displayGrades}`;
         
         const cityParts = city.split(" ");
         cityParts.forEach((part, index) => {

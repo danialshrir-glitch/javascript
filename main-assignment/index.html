@@ -16,6 +16,7 @@
         <script src="scripts/show-available-cards-script.js" defer></script>
         <script src="scripts/card-creation-deletion-script.js" defer></script>
         <script src="scripts/show-10-cards.js" defer></script>
+        <script src="scripts/filter-cards.js" defer></script>
     </head>
     <body>
         <header>
@@ -67,14 +68,14 @@
         <div id="cards-filtering-page">
             <h1>Filter cards</h1>
             <div id="filtering-menu">
-                <select>
+                <select id="filter-select">
                     <option value="age">Age</option>
                     <option value="name">Name</option>
                     <option value="admin">Admin</option>
                     <option value="grades">Grades</option>
                     <option value="address">Address</option>
                 </select>
-                <input type="text" name="search-bar" />
+                <input type="text" id="search-bar" name="search-bar"  />
                 <button id="find" disabled>Find</button>
                 <button id="reset">Reset</button>
                 <button id="sort">Sort</button>
