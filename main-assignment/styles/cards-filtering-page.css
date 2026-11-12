@@ -10,3 +10,12 @@
 #cards-filtering-page h1 {
     color: rgb(65, 38, 38);
 }
+
+#cards-filtering-page #filtering-menu {
+    margin-bottom: 10px;
+}
+
+#cards-filtering-page section {
+    display: flex;
+    flex-wrap: wrap;
+}
