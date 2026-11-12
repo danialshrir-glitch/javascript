@@ -15,6 +15,10 @@
     margin-bottom: 10px;
 }
 
+#cards-creation-deletion-page p #error-message-creation {
+    display: none;
+}
+
 #cards-creation-deletion-page section {
     display: flex;
     flex-wrap: wrap;

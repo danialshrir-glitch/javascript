@@ -36,17 +36,6 @@ function validateName(name) {
     return nameLen >= MIN_NAME_LEN && ALLOWED_NAME_CHARS.test(name);
 };
 
-function download(filename, text) {
-    const element = document.createElement("a");
-    element.setAttribute("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(text));
-    element.setAttribute("download", filename);
-
-    element.style.display = "none";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-};
-
 function saveDataFromCards(className) {
     const cardsDataArray = [];
     const cards = document.getElementsByClassName(String(className));
@@ -69,22 +58,18 @@ function saveDataFromCards(className) {
         cardsDataArray.push(cardData);
     };
     const cardsDataString = JSON.stringify(cardsDataArray);
-    
-    const filename = "cards-data.json";
-    download(filename, cardsDataArray);
+    localStorage.setItem("cards-data", cardsDataString);
 };
 
 const createNewCard = () => {
     let fullName = document.getElementById("full-name").value;
     const email = document.getElementById("email").value;
-    const parentNode = creationDeletionForm.parentNode;
-    const nextSibling = creationDeletionForm.nextSibling;
+    const errorPara = document.getElementById("error-message-creation");
 
     if (fullName === "" || email === "") {
-        const para1 = document.createElement("p");
+        const para1 = document.getElementById("error-message-creation");
         para1.textContent = "Not all fields are filled. Please enter input to both fields.";
-        parentNode.insertBefore(para1, nextSibling);
-        parentNode.removeChild(nextSibling);
+        para1.style.display = "block";
         return;
     };
 
@@ -95,24 +80,20 @@ const createNewCard = () => {
     };
 
     if (!validateEmail(email)) {
-        const para1 = document.createElement("p");
+        const para1 = document.getElementById("error-message-creation");
         para1.textContent = "Email field is invalid. Please enter a valid email address.";
-        parentNode.insertBefore(para1, nextSibling);
-        parentNode.removeChild(nextSibling);
+        para1.style.display = "block";
         return;
     };
 
     if (!validateName(fullName)) {
-        const para1 = document.createElement("p");
-        para1.textContent = "Name field is invalid. Name should be at least 2 characters long and contain only letters, spaces, dots and apostrophes.";
-        parentNode.insertBefore(para1, nextSibling);
-        parentNode.removeChild(nextSibling);
+        errorPara.textContent = "Name field is invalid. Name should be at least 2 characters long and contain only letters, spaces, dots and apostrophes.";
+        errorPara.style.display = "block";
         return;
     };
 
-    if (nextSibling instanceof Element) {
-        parentNode.removeChild(nextSibling);
-    };
+    errorPara.textContent = "";
+    errorPara.style.display = "none";
 
     count++;
     const section = document.getElementById("all-cards");
