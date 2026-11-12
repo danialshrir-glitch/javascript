@@ -36,13 +36,42 @@ function validateName(name) {
     return nameLen >= MIN_NAME_LEN && ALLOWED_NAME_CHARS.test(name);
 };
 
-function download(content, fileName, contentType) {
-    const a = document.createElement("a");
-    const file = new Blob([content], {type: contentType});
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-    a.remove();
+function download(filename, text) {
+    const element = document.createElement("a");
+    element.setAttribute("href", "data:text/plain;charset=UTF-8," + encodeURIComponent(text));
+    element.setAttribute("download", filename);
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+};
+
+function saveDataFromCards(className) {
+    const cardsDataArray = [];
+    const cards = document.getElementsByClassName(String(className));
+
+    for (const card of cards) {
+        const allParagraphs = card.querySelectorAll("p");
+        const namePara = allParagraphs[0].textContent;
+        const emailPara = allParagraphs[1].textContent;
+
+        const colonNameIndex = namePara.indexOf(":");
+        const name = namePara.slice(colonNameIndex + 2);
+
+        const colonEmailIndex = emailPara.indexOf(":");
+        const email = emailPara.slice(colonEmailIndex + 2);
+
+        const cardData = {
+            "name": name,
+            "email": email
+        };
+        cardsDataArray.push(cardData);
+    };
+    const cardsDataString = JSON.stringify(cardsDataArray);
+    
+    const filename = "cards-data.json";
+    download(filename, cardsDataArray);
 };
 
 const createNewCard = () => {
@@ -132,11 +161,17 @@ const createNewCard = () => {
         delBtn.style.display = "block";
     });
     section.appendChild(cardBox);
+
+    const cardsClassName = cardBox.className;
+    saveDataFromCards(cardsClassName);
 };
 
 const deleteCard = (cardId) => {
     const requestedCard = document.getElementById(cardId);
+    const cardClassName = requestedCard.className;
     requestedCard.remove();
+
+    saveDataFromCards(cardClassName);
 };
 
 cardCreationButton.addEventListener("click", createNewCard);
