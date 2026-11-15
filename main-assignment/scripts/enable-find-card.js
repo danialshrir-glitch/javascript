@@ -8,15 +8,17 @@ function isAllowed(chosenValue, userInput) {
     const pattern = /[a-zA-Z]+$/;
     switch(chosenValue) {
         case "age":
-            return userInput !== "" && !Number.isNaN(userInput);
+            return userInput !== "" && !isNaN(Number(userInput));
         case "name":
             return userInput.length >= MIN_NAME_LENGTH && userInput.match(pattern);
         case "admin":
             return userInput === "true";
         case "grades":
-            return userInput !== "" && !isNaN(userInput);
+            return userInput !== "" && !isNaN(Number(userInput));
         case "address":
-            return (userInput !== "" && pattern.test(userInput)) || (userInput !== "" && !Number.isNaN(userInput));
+            return (userInput !== "" && userInput.match(pattern)) || (userInput !== "" && !isNaN(Number(userInput)));
+        default:
+            return false;
     };
 };
 
@@ -25,7 +27,11 @@ const enableButton = () => {
     const userInput = searchBarInput.value;
 
     const allowed = isAllowed(chosenValue, userInput);
-    console.log(allowed);
+    if (allowed) {
+        findButton.disabled = false;
+    } else {
+        findButton.disabled = true;
+    };
 };
 
 enableButton();

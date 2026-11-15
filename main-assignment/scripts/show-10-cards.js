@@ -151,8 +151,21 @@ const TEN_CARDS = [
     }
 ]
 
-function show10CardsData(cards) {
-    let count = 0;
+const form = document.getElementById("filtering-menu");
+const resetButton = document.getElementById("reset");
+const filteringDropdownMenu = document.getElementById("filter-select");
+const searchBar = document.getElementById("search-bar");
+
+const show10CardsData = cards => {
+    const section = document.getElementById("ten-cards");
+
+    filteringDropdownMenu.selectedIndex = 0;
+    searchBar.value = "";
+
+    const allDivs = section.querySelectorAll("div");
+    for (const div of allDivs) {
+        section.removeChild(div);
+    };
 
     for (const card of cards) {
         const age = card.age;
@@ -163,7 +176,6 @@ function show10CardsData(cards) {
         const city = address.city;
         const houseNumber = address.houseNumber;
 
-        const section = document.getElementById("ten-cards");
         const cardBox = document.createElement("div");
         cardBox.className = "card-data";
         cardBox.id = `card-data-${count}`;
@@ -216,3 +228,5 @@ function show10CardsData(cards) {
 };
 
 show10CardsData(TEN_CARDS);
+
+resetButton.addEventListener("click", () => show10CardsData(TEN_CARDS));
