@@ -1,5 +1,6 @@
 const ADDRESS_FILTER = "address";
-let findButton = document.getElementById("find");
+const GRADES_FILTER = "grades";
+findButton = document.getElementById("find");
 
 const filterCards = () => {
     const tenCardsString = localStorage.getItem("ten-cards");
@@ -25,16 +26,23 @@ const filterCards = () => {
     const userInput = searchBarInput.value;
 
     tenCards.forEach((card, index) => {
-        let cardFilterValue = String(card[filter]);
+        let cardFilterValue = card[filter];
+        if (filter === GRADES_FILTER) {
+            cardFilterValue = cardFilterValue.reduce((acc, a) => acc + a, 0) / card[filter].length;
+            console.log(cardFilterValue);
+        }
         if (filter === ADDRESS_FILTER) {
             if (isNaN(userInput)) {
-                cardFilterValue = card[filter].city;
+                cardFilterValue = cardFilterValue.city;
             } else {
-                cardFilterValue = card[filter].houseNumber;
+                cardFilterValue = cardFilterValue.houseNumber;
             };
         };
+
         const userInputLower = userInput.toLowerCase();
-        if (cardFilterValue === userInputLower) {
+
+        const avgSmallerThanInput = Number(userInput) < cardFilterValue;
+        if (cardFilterValue === userInputLower || avgSmallerThanInput) {
             const cardId = `card-data-${index}`;
             const cardBox = document.getElementById(cardId);
             cardBox.style.display = "block";
