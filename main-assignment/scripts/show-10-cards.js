@@ -151,13 +151,25 @@ const TEN_CARDS = [
     }
 ]
 
+const page = document.getElementById("cards-filtering-page");
 const form = document.getElementById("filtering-menu");
 const resetButton = document.getElementById("reset");
 const filteringDropdownMenu = document.getElementById("filter-select");
 const searchBar = document.getElementById("search-bar");
 
+const tenCardsString = JSON.stringify(TEN_CARDS);
+localStorage.setItem("ten-cards", tenCardsString);
+
 const show10CardsData = cards => {
-    const section = document.getElementById("ten-cards");
+    const findButton = document.getElementById("find");
+    findButton.disabled = true;
+    let count = 0;
+    let section = document.getElementById("ten-cards");
+    if (!section) {
+        section = document.createElement("section");
+        section.id = "ten-cards";
+        page.appendChild(section);
+    };
 
     filteringDropdownMenu.selectedIndex = 0;
     searchBar.value = "";
@@ -224,6 +236,8 @@ const show10CardsData = cards => {
         cardBox.appendChild(houseNumberField);
 
         section.appendChild(cardBox);
+
+        count++;
     };
 };
 

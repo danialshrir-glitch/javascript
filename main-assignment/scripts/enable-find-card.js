@@ -2,17 +2,17 @@ const MIN_NAME_LENGTH = 2;
 
 const filteringForm = document.getElementById("filter-select");
 const searchBarInput = document.getElementById("search-bar");
-const findButton = document.getElementById("find");
+let findButton = document.getElementById("find");
 
 function isAllowed(chosenValue, userInput) {
-    const pattern = /[a-zA-Z]+$/;
+    const pattern = /[a-zA-Z\s]+$/;
     switch(chosenValue) {
         case "age":
             return userInput !== "" && !isNaN(Number(userInput));
         case "name":
             return userInput.length >= MIN_NAME_LENGTH && userInput.match(pattern);
         case "admin":
-            return userInput === "true";
+            return userInput === "true" || userInput === "false";
         case "grades":
             return userInput !== "" && !isNaN(Number(userInput));
         case "address":
