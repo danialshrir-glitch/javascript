@@ -20,6 +20,7 @@
         <script src="scripts/filter-cards.js" defer></script>
         <script src="scripts/cards-sorting-script.js" defer></script>
         <script src="scripts/cards-reversing-script.js" defer></script>
+        <script src="scripts/algorithms-scripts.js" defer></script>
     </head>
     <body>
         <header>
@@ -93,14 +94,14 @@
                 <section id="algorithms-1">
                     <h2>Example algorithms:</h2>
                     <div class="separator">
-                        <label>Choose your algorithm:&nbsp;</label>
-                        <select>
+                        <label>Choose your algorithm:</label>
+                        <select id="available-algorithms">
                             <option value="palindrome">Palindrome</option>
                             <option value="prime">Prime</option>
                             <option value="password">Password</option>
                             <option value="unique">Unique</option>
                         </select>
-                        <input type="text" name="string1" />
+                        <input type="text" name="algorithm-input" id="algorithm-input" />
                     </div>
                 </section>
                 <section id="algorithms-2">
@@ -108,8 +109,8 @@
                     <div class="separator">
                         <input type="text" name="encryption-decryption-algorithm" placeholder="Text" />
                         <input type="number" name="chars-to-move" placeholder="Number" />
-                        <button>Encrypt</button>
-                        <button>Decrypt</button>
+                        <button type="button" id="encryption-input">Encrypt</button>
+                        <button type="button" id="decryption-input">Decrypt</button>
                     </div>
                 </section>
             </div>

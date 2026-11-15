@@ -29,8 +29,16 @@
     float: left;
 }
 
+#algorithms-page .separator #algorithms-1 .separator label {
+    padding: 10px;
+}
+
 #algorithms-page .separator #algorithms-2 {
     margin-left: auto;
     margin-right: 30px;
     padding: 20px;
+}
+
+#algorithms-page .separator #algorithms-2 input {
+    margin-right: 10px
 }
