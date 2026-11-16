@@ -23,6 +23,7 @@
         <script src="scripts/algorithms-scripts.js" defer></script>
         <script src="scripts/encryption-script.js" defer></script>
         <script src="scripts/decryption-script.js" defer></script>
+        <script src="scripts/recursion-scripts.js" defer></script>
     </head>
     <body>
         <header>
@@ -123,16 +124,17 @@
         <div id="recursion-page">
             <h1>Recursion</h1>
             <div class="separator">
-                <input type="number" name="recursion-number" placeholder="Enter a number" />
-                <select>
+                <input type="number" id="recursion-page-input" name="recursion-page-input" placeholder="Enter a number" />
+                <select id="algorithm-selection">
                     <option value="factorial">Factorial</option>
                     <option value="fibonacci">Fibonacci</option>
                 </select>
-                <select>
+                <select id="calculation-type">
                     <option value="iterative">Iterative</option>
                     <option value="recursive">Recursive</option>
                 </select>
             </div>
+            <label id="calculation-result"></label>
         </div>
 
         <div id="tic-tac-toe-page">
