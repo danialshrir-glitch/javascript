@@ -1,4 +1,5 @@
 const MIN_PASSWORD_LENGTH = 8;
+const MAX_CHAR = 256;
 
 const availableAlgorithms = document.getElementById("available-algorithms");
 const userInput = document.getElementById("algorithm-input");
@@ -23,10 +24,32 @@ const isValidPassword = password => {
     return password.length >= MIN_PASSWORD_LENGTH && oneUpperOneLowerOneDigit.test(password) && oneSpecialChar.test(password);
 };
 
+const isUnique = str => {
+    if (str.length > MAX_CHAR) {
+        return false;
+    };
+
+    const chars = new Array(MAX_CHAR);
+    for (let i = 0; i < MAX_CHAR; i++) {
+        chars[i] = false;
+    };
+
+    for (let i = 0; i < str.length; i++) {
+        const index = str[i].charCodeAt();
+
+        if (chars[index] === true) {
+            return false;
+        };
+
+        chars[index] = true;
+    };
+    
+    return true;
+};
+
 const checkAlgorithm = () => {
     const chosenAlgorithm = availableAlgorithms.value;
     const input = userInput.value;
-    console.log(input);
 
     switch (chosenAlgorithm) {
         case "palindrome":
@@ -35,9 +58,10 @@ const checkAlgorithm = () => {
             } else {
                 userInput.style.color = "red";
             };
+            return;
         case "prime":
             if (isNaN(Number(input))) {
-                return false;
+                userInput.style.color = "red";
             };
             const numToCheck = Number(input);
             if (isPrime(numToCheck)) {
@@ -45,12 +69,21 @@ const checkAlgorithm = () => {
             } else {
                 userInput.style.color = "red";
             };
+            return;
         case "password":
             if (isValidPassword(input)) {
                 userInput.style.color = "green";
             } else {
                 userInput.style.color = "red";
             };
+            return;
+        case "unique":
+            if (isUnique(input)) {
+                userInput.style.color = "green";
+            } else {
+                userInput.style.color = "red";
+            };
+            return;
         default:
             console.log("");
     };
