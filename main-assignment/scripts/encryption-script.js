@@ -18,8 +18,16 @@ const encryptString = (str, number) => {
 };
 
 const encryptInput = () => {
+    const encryptionLabel = document.getElementById("encrypted-decrypted-data");
     const userInput = document.getElementById("encryption-decryption-input-string");
     const shiftingsNumber = document.getElementById("number-of-shiftings");
+
+    if (encryptionLabel.style.display === "block") {
+        encryptionLabel.style.display = "none";
+        userInput.style.display = "block";
+        shiftingsNumber.style.display = "block";
+        return;
+    };
 
     const inputString = userInput.value;
     const shiftsNumber = Number(shiftingsNumber.value);
@@ -30,7 +38,14 @@ const encryptInput = () => {
     };    
 
     const encrypted = encryptString(inputString, shiftsNumber);
-    userInput.value = encrypted;
+
+    userInput.style.display = "none";
+    shiftingsNumber.style.display = "none";
+    userInput.value = "";
+    shiftingsNumber.value = "";
+
+    encryptionLabel.textContent = encrypted;
+    encryptionLabel.style.display = "block";
 };
 
 encryptionButton.addEventListener("click", encryptInput);

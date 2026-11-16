@@ -40,5 +40,9 @@
 }
 
 #algorithms-page .separator #algorithms-2 input {
-    margin-right: 10px
+    margin-right: 10px;
+}
+#algorithms-page .separator #algorithms-2 label #encrypted-decrypted-data {
+    display: none;
+    margin-right: 10px;
 }
