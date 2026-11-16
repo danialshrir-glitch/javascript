@@ -21,6 +21,7 @@
         <script src="scripts/cards-sorting-script.js" defer></script>
         <script src="scripts/cards-reversing-script.js" defer></script>
         <script src="scripts/algorithms-scripts.js" defer></script>
+        <script src="scripts/encryption-script.js" defer></script>
     </head>
     <body>
         <header>
@@ -107,10 +108,10 @@
                 <section id="algorithms-2">
                     <h2>Encryption/Decryption algorithms:</h2>
                     <div class="separator">
-                        <input type="text" name="encryption-decryption-algorithm" placeholder="Text" />
-                        <input type="number" name="chars-to-move" placeholder="Number" />
-                        <button type="button" id="encryption-input">Encrypt</button>
-                        <button type="button" id="decryption-input">Decrypt</button>
+                        <input type="text" id="encryption-decryption-input-string" name="encryption-decryption-input-string" placeholder="Text" />
+                        <input type="number" id="number-of-shiftings" name="number-of-shiftings" placeholder="Number" />
+                        <button type="button" id="encrypt">Encrypt</button>
+                        <button type="button" id="decrypt">Decrypt</button>
                     </div>
                 </section>
             </div>
