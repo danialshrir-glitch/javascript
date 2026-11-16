@@ -23,6 +23,7 @@ const encryptInput = () => {
     const shiftingsNumber = document.getElementById("number-of-shiftings");
 
     if (encryptionLabel.style.display === "block") {
+        encryptionLabel.textContent = "";
         encryptionLabel.style.display = "none";
         userInput.style.display = "block";
         shiftingsNumber.style.display = "block";
