@@ -42,7 +42,12 @@
 #algorithms-page .separator #algorithms-2 input {
     margin-right: 10px;
 }
-#algorithms-page .separator #algorithms-2 label #encrypted-decrypted-data {
+#algorithms-page .separator #algorithms-2 .separator label {
     display: none;
-    margin-right: 10px;
+    margin-right: 40px;
+}
+
+#algorithms-page .separator #algorithms-2 #error-label {
+    display: none;
+    color: red;
 }

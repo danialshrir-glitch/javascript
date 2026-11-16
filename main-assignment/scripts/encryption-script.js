@@ -1,7 +1,8 @@
-const encryptionButton = document.getElementById("encrypt");
 const ENGLISH_CHARS_NUMBER = 26;
 const firstUpperLetter = "A".charCodeAt(0);
 const firstLowerLetter = "a".charCodeAt(0);
+const encryptionButton = document.getElementById("encrypt");
+const errorLabel = document.getElementById("error-label");
 
 const encryptString = (str, number) => {
     let res = "";
@@ -18,6 +19,8 @@ const encryptString = (str, number) => {
 };
 
 const encryptInput = () => {
+    errorLabel.textContent = "";
+    errorLabel.style.display = "none";
     const encryptionLabel = document.getElementById("encrypted-decrypted-data");
     const userInput = document.getElementById("encryption-decryption-input-string");
     const shiftingsNumber = document.getElementById("number-of-shiftings");
@@ -33,10 +36,18 @@ const encryptInput = () => {
     const inputString = userInput.value;
     const shiftsNumber = Number(shiftingsNumber.value);
 
+    if (shiftsNumber <= 0 || shiftsNumber >= ENGLISH_CHARS_NUMBER) {
+        errorLabel.textContent = "Number should be between 1 included to 25 included.";
+        errorLabel.style.display = "block";
+        return;
+    };
+
     const englishLettersPattern = /[a-zA-Z]/;
     if (!englishLettersPattern.test(inputString) || !shiftsNumber) {
+        errorLabel.textContent = "Input text should only contain letters.";
+        errorLabel.style.display = "block";
         return;
-    };    
+    };
 
     const encrypted = encryptString(inputString, shiftsNumber);
 
