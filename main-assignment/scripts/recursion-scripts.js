@@ -1,9 +1,13 @@
 const recursionPageInput = document.getElementById("recursion-page-input");
 const algorithmDropdownMenu = document.getElementById("algorithm-selection");
 const calculationTypeDropdownMenu = document.getElementById("calculation-type");
+const dataLabel = document.getElementById("calculation-result");
 
 const factorialIterative = num => {
     let res = `${num}! = `;
+    if (num === 0) {
+        return `${res}1`;
+    };
     let factorial = 1;
 
     for (let i = 1; i < num; i++) {
@@ -16,8 +20,8 @@ const factorialIterative = num => {
     return res;
 };
 
-const factorialRecursive = (num) => {
-    return factorialRecursiveCalculation(num, Number(num), "");
+const factorialRecursive = num => {
+    return factorialRecursiveCalculation(num, num, "");
 };
 
 const factorialRecursiveCalculation = (num, originalNum, res) => {
@@ -25,7 +29,7 @@ const factorialRecursiveCalculation = (num, originalNum, res) => {
         return {
             curFact: 1,
             curNumb: 1,
-            curResu: "1"
+            curResu: `1`
         };
     };
 
@@ -51,11 +55,34 @@ const factorialRecursiveCalculation = (num, originalNum, res) => {
 };
 
 const displayResult = () => {
+    dataLabel.textContent = "";
     const userInput = recursionPageInput.value;
     const algorithmChosen = algorithmDropdownMenu.value;
     const calculationType = calculationTypeDropdownMenu.value;
 
-    console.log(factorialRecursive(5));
+    if (userInput === "") {
+        return;
+    };
+
+    let res = "";
+    switch (algorithmChosen) {
+        case "factorial":
+            switch (calculationType) {
+                case "iterative":
+                    res = factorialIterative(Number(userInput));
+                    break;
+                case "recursive":
+                    res = factorialRecursive(Number(userInput)).curResu;
+                    break;
+                default:
+                    console.log("");
+            };
+            break;
+        default:
+            console.log("");
+    };
+
+    dataLabel.textContent = res;
 };
 
 recursionPageInput.addEventListener("input", displayResult);
