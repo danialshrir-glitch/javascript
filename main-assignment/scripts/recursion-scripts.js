@@ -21,7 +21,7 @@ const factorialIterative = num => {
 };
 
 const factorialRecursive = num => {
-    return factorialRecursiveCalculation(num, num, "");
+    return factorialRecursiveCalculation(num, num, "").curResu;
 };
 
 const factorialRecursiveCalculation = (num, originalNum, res) => {
@@ -33,13 +33,11 @@ const factorialRecursiveCalculation = (num, originalNum, res) => {
         };
     };
 
-    const curObj = factorialRecursiveCalculation(num - 1, originalNum, res);
-    
+    const curObj = factorialRecursiveCalculation(num - 1, Number(originalNum), res);
     let curFactorial = curObj.curFact;
-    let curNum = curObj.curNumb;
     let curRes = curObj.curResu;
 
-    if (curNum === originalNum) {
+    if (num === originalNum) {
         return {
             curFact: curFactorial * num,
             curNumb: num,
@@ -52,6 +50,38 @@ const factorialRecursiveCalculation = (num, originalNum, res) => {
         curNumb: num + 1,
         curResu: `${curRes} * ${num}`
     };
+};
+
+const fibonacciIterative = num => {
+    let res = "";
+    let num1 = 0, num2 = 1;
+    
+    for (let i = 0; i < num - 1; i++) {
+        res += `${num1}, `;
+        let temp = num2;
+        num2 += num1;
+        num1 = temp;
+    };
+
+    res += `${num1}`;
+    return res;
+};
+
+const fibonacciRecursive = num => {
+    return fibonacciRecursiveCalculation(num).slice(0, -1).join(", ");
+};
+
+const fibonacciRecursiveCalculation = num => {
+    if (num === 0) {
+        return [0];
+    };
+
+    if (num === 1) {
+        return [0 ,1];
+    };
+
+    const arr = fibonacciRecursiveCalculation(num - 1);
+    return [...arr, arr[num - 1] + arr[num - 2]];
 };
 
 const displayResult = () => {
@@ -69,10 +99,22 @@ const displayResult = () => {
         case "factorial":
             switch (calculationType) {
                 case "iterative":
-                    res = factorialIterative(Number(userInput));
+                    res = factorialIterative(userInput);
                     break;
                 case "recursive":
-                    res = factorialRecursive(Number(userInput)).curResu;
+                    res = factorialRecursive(userInput);
+                    break;
+                default:
+                    console.log("");
+            };
+            break;
+        case "fibonacci":
+            switch (calculationType) {
+                case "iterative":
+                    res = fibonacciIterative(userInput);
+                    break;
+                case "recursive":
+                    res = fibonacciRecursive(userInput);
                     break;
                 default:
                     console.log("");
