@@ -24,6 +24,7 @@
         <script src="scripts/encryption-script.js" defer></script>
         <script src="scripts/decryption-script.js" defer></script>
         <script src="scripts/recursion-scripts.js" defer></script>
+        <script src="scripts/game-scripts.js" defer></script>
     </head>
     <body>
         <header>
@@ -139,7 +140,11 @@
 
         <div id="tic-tac-toe-page">
             <h1>Tic-Tac-Toe</h1>
-            <div class="tic-tac-toe-game"></div>
+            <div id="tic-tac-toe-game">
+                <canvas id="game-board"></canvas>
+                <button id="reset-board">Reset game</button>
+                <p id="win-message"></p>
+            </div>
         </div>
     </body>
 </html>

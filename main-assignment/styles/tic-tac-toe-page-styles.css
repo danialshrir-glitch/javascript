@@ -7,6 +7,23 @@
     display: none;
 }
 
-#tic-tac-toe-game h1 {
+#tic-tac-toe-page h1 {
     color: rgb(65, 38, 38);
+    margin-bottom: 10px;
+}
+
+#tic-tac-toe-page #tic-tac-toe-game #game-board {
+    border: 2px solid black;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#tic-tac-toe-page #tic-tac-toe-game button {
+    font: 1.2em / 1.5 system-ui;
+    padding: 10px;
 }
