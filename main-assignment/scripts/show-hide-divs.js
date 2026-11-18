@@ -11,9 +11,9 @@ const hidePreviousShowNew = e => {
         const matchingElement = document.getElementById(pageId);
         matchingElement.style.display = 
             (curButtonId === curId) ? "block" : "none";
-    };
-};
+    }
+}
 
 for (const button of navBtnsList) {
     button.addEventListener("click", hidePreviousShowNew);
-};
+}

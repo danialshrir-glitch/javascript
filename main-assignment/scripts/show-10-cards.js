@@ -149,7 +149,7 @@ const TEN_CARDS = [
             "houseNumber": 112
         }
     }
-]
+];
 
 const page = document.getElementById("cards-filtering-page");
 const form = document.getElementById("filtering-menu");
@@ -169,7 +169,7 @@ const show10CardsData = cards => {
         section = document.createElement("section");
         section.id = "ten-cards";
         page.appendChild(section);
-    };
+    }
 
     filteringDropdownMenu.selectedIndex = 0;
     searchBar.value = "";
@@ -177,7 +177,7 @@ const show10CardsData = cards => {
     const allDivs = section.querySelectorAll("div");
     for (const div of allDivs) {
         section.removeChild(div);
-    };
+    }
 
     for (const card of cards) {
         const age = card.age;
@@ -238,8 +238,8 @@ const show10CardsData = cards => {
         section.appendChild(cardBox);
 
         count++;
-    };
-};
+    }
+}
 
 show10CardsData(TEN_CARDS);
 

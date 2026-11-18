@@ -6,20 +6,20 @@ const reverseCards = () => {
 
     if (!tenCards) {
         return;
-    };
+    }
 
     let section = document.getElementById("ten-cards");
     if (!section) {
         section = document.createElement("section");
         section.id = "ten-cards";
         page.appendChild(section);
-    };
+    }
 
     const allDivs = section.querySelectorAll("div");
 
     for (const div of allDivs) {
         section.removeChild(div);
-    };
+    }
 
     console.log(tenCards);
     const reversedTenCards = tenCards.toReversed();
@@ -86,6 +86,6 @@ const reverseCards = () => {
 
         count++;
     }
-};
+}
 
 reverseButton.addEventListener("click", reverseCards);

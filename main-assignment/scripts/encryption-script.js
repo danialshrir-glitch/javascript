@@ -16,7 +16,7 @@ const encryptString = (str, number) => {
     };
 
     return res;
-};
+}
 
 const encryptInput = () => {
     errorLabel.textContent = "";
@@ -31,7 +31,7 @@ const encryptInput = () => {
         userInput.style.display = "block";
         shiftingsNumber.style.display = "block";
         return;
-    };
+    }
 
     const inputString = userInput.value;
     const shiftsNumber = Number(shiftingsNumber.value);
@@ -40,14 +40,14 @@ const encryptInput = () => {
         errorLabel.textContent = "Number should be between 1 included to 25 included.";
         errorLabel.style.display = "block";
         return;
-    };
+    }
 
     const englishLettersPattern = /[a-zA-Z]/;
     if (!englishLettersPattern.test(inputString) || !shiftsNumber) {
         errorLabel.textContent = "Input text should only contain letters.";
         errorLabel.style.display = "block";
         return;
-    };
+    }
 
     const encrypted = encryptString(inputString, shiftsNumber);
 
@@ -58,6 +58,6 @@ const encryptInput = () => {
 
     encryptionLabel.textContent = encrypted;
     encryptionLabel.style.display = "block";
-};
+}
 
 encryptionButton.addEventListener("click", encryptInput);

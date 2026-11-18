@@ -8,19 +8,19 @@ const filterCards = () => {
 
     if (!tenCards) {
         return;
-    };
+    }
 
     let section = document.getElementById("ten-cards");
     if (!section) {
         section = document.createElement("section");
         section.id = "ten-cards";
         page.appendChild(section);
-    };
+    }
 
     const allDivs = section.querySelectorAll("div");
     for (const div of allDivs) {
         div.style.display = "none";
-    };
+    }
 
     let filter = filteringForm.value;
     const userInput = searchBarInput.value;
@@ -36,8 +36,8 @@ const filterCards = () => {
                 cardFilterValue = cardFilterValue.city;
             } else {
                 cardFilterValue = cardFilterValue.houseNumber;
-            };
-        };
+            }
+        }
 
         const userInputLower = userInput.toLowerCase();
 
@@ -46,8 +46,8 @@ const filterCards = () => {
             const cardId = `card-data-${index}`;
             const cardBox = document.getElementById(cardId);
             cardBox.style.display = "block";
-        };
-    });
-};
+        }
+    })
+}
 
 findButton.addEventListener("click", filterCards);

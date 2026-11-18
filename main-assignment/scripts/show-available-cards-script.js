@@ -5,19 +5,19 @@ function showAllCards() {
 
     if (!cards) {
         return;
-    };
+    }
 
     const section = document.getElementById("all-cards");
 
-    cards.forEach((card, index) => {
+    cards.forEach(card => {
         let name = "",
             email = "";
         if (card.hasOwnProperty("name")) {
             name = card.name;
-        };
+        }
         if (card.hasOwnProperty("email")) {
             email = card.email;
-        };
+        }
 
         const section = document.getElementById("all-cards");
         const cardBox = document.createElement("div");
@@ -60,12 +60,12 @@ function showAllCards() {
         cardBox.appendChild(delBtn);
         cardBox.addEventListener("mouseleave", () => {
             delBtn.style.display = "none";
-        });
+        })
         cardBox.addEventListener("mouseenter", () => {
             delBtn.style.display = "block";
-        });
+        })
         section.appendChild(cardBox);
     });
-};
+}
 
 showAllCards();

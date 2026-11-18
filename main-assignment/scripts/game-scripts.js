@@ -11,7 +11,7 @@ class Square {
         this.height = height;
         this.ctx = ctx;
         this.actor = null;
-    };
+    }
 
     draw() {
         this.ctx.lineWidth = 2;
@@ -25,9 +25,9 @@ class Square {
             this.ctx.textAlign = "center";
             this.ctx.fillText(this.actor, this.xPos + this.width / 2, this.yPos + this.height / 2 + 10);
             this.ctx.closePath();
-        };
-    };
-};
+        }
+    }
+}
 
 class TicTacToe {
     constructor(canvasId, labelId, btnId) {
@@ -45,8 +45,8 @@ class TicTacToe {
         for (let x = 0; x < ROWS_NUM; x++) {
             for (let y = 0; y < COLUMNS_NUM; y++) {
                 this.squares.push(new Square(x * w, y * h, w, h, this.ctx));
-            };
-        };
+            }
+        }
 
         this.actors = ["X", "O"];
 
@@ -63,12 +63,12 @@ class TicTacToe {
         this.canvas.addEventListener("click", function(event) {
             this.click(event);
         }.bind(this));
-    };
+    }
 
     click(event) {
         if (this.gameOver) {
             return;
-        };
+        }
 
         const x = event.offsetX / 2;
         const y = event.offsetY / 2;
@@ -76,7 +76,7 @@ class TicTacToe {
         for (const square of this.squares) {
             if (square.actor !== null) {
                 continue;
-            };
+            }
 
             if ((x >= square.xPos && x <= square.xPos + square.width) && (y >= square.yPos && y <= square.yPos + square.height)) {
                 square.actor = this.actors[this.turn];
@@ -84,11 +84,11 @@ class TicTacToe {
                 this.turn = (this.turn + 1) % this.actors.length;
 
                 this.label.textContent = `${this.actors[this.turn]}'s turn`;
-            };
-        };
+            }
+        }
 
         this.checkForWinner();
-    };
+    }
 
     checkForWinner() {
         const winCombinations = [
@@ -119,9 +119,9 @@ class TicTacToe {
 
                     this.label.style.display = "none";
                     this.resetButton.style.display = "block";
-                };
-            };
-        };
+                }
+            }
+        }
 
         if (!this.gameOver && this.squares.filter(square => square.actor === null).length === 0) {
             this.gameOver = true;
@@ -141,7 +141,7 @@ class TicTacToe {
         this.resetButton.style.display = "none";
         this.label.textContent = `${this.actors[this.turn]}'s turn`;
         this.label.style.display = "block";
-    };
-};
+    }
+}
 
 const game = new TicTacToe("game-board", "cur-player", "reset-game");

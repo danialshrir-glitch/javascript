@@ -19,8 +19,8 @@ function isAllowed(chosenValue, userInput) {
             return (userInput !== "" && userInput.match(pattern)) || (userInput !== "" && !isNaN(Number(userInput)));
         default:
             return false;
-    };
-};
+    }
+}
 
 const enableButton = () => {
     const chosenValue = filteringForm.value;
@@ -31,8 +31,8 @@ const enableButton = () => {
         findButton.disabled = false;
     } else {
         findButton.disabled = true;
-    };
-};
+    }
+}
 
 enableButton();
 filteringForm.addEventListener("change", enableButton);

@@ -6,14 +6,14 @@ const sortCards = () => {
 
     if (!tenCards) {
         return;
-    };
+    }
 
     let section = document.getElementById("ten-cards");
     if (!section) {
         section = document.createElement("section");
         section.id = "ten-cards";
         page.appendChild(section);
-    };
+    }
 
     const namesAndIds = [];
     tenCards.forEach((card, index) => {
@@ -25,13 +25,12 @@ const sortCards = () => {
     });
 
     namesAndIds.sort((a, b) => a.name.localeCompare(b.name));
-    console.log(namesAndIds);
 
     const allDivs = section.querySelectorAll("div");
 
     for (const div of allDivs) {
         section.removeChild(div);
-    };
+    }
 
     for (const nameAndId of namesAndIds) {
         const curId = nameAndId.id;
@@ -93,7 +92,7 @@ const sortCards = () => {
         cardBox.appendChild(houseNumberField);
 
         section.appendChild(cardBox);
-    };
-};
+    }
+}
 
 sortButton.addEventListener("click", sortCards);
