@@ -3,9 +3,6 @@ const RADIUS_LENGTH = 30;
 const ROWS_NUM = 3;
 const COLUMNS_NUM = 3;
 
-const resetBoardButton = document.getElementById("reset-board");
-const winMessagePara = document.getElementById("win-message");
-
 class Square {
     constructor(xPos, yPos, width, height, ctx) {
         this.xPos = xPos;
@@ -21,14 +18,11 @@ class Square {
         this.ctx.strokeStyle = "black";
         this.ctx.strokeRect(this.xPos, this.yPos, this.width, this.height);
 
-        console.log(this.actor);
-
         if (this.actor !== null) {
             this.ctx.beginPath();
             this.ctx.fillStyle = "black";
             this.ctx.font = "30px Arial";
             this.ctx.textAlign = "center";
-            console.log(this.actor);
             this.ctx.fillText(this.actor, this.xPos + this.width / 2, this.yPos + this.height / 2 + 10);
             this.ctx.closePath();
         };
@@ -36,9 +30,12 @@ class Square {
 };
 
 class TicTacToe {
-    constructor(id) {
-        this.canvas = document.getElementById(id);
+    constructor(canvasId, labelId, btnId) {
+        this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext("2d");
+
+        this.label = document.getElementById(labelId);
+        this.resetButton = document.getElementById(btnId);
 
         this.squares = [];
 
@@ -51,14 +48,17 @@ class TicTacToe {
             };
         };
 
-        this.actors = ["x", "o"];
+        this.actors = ["X", "O"];
 
         this.turn = 0;
 
         this.gameOver = false;
 
         this.squares.forEach(squares => squares.draw());
-        console.log(this.squares);
+
+        this.label.textContent = `${this.actors[this.turn]}'s turn`;
+        this.resetButton.style.display = "none";
+        this.resetButton.addEventListener("click", () => this.reset());
 
         this.canvas.addEventListener("click", function(event) {
             this.click(event);
@@ -67,7 +67,6 @@ class TicTacToe {
 
     click(event) {
         if (this.gameOver) {
-            this.reset();
             return;
         };
 
@@ -80,13 +79,11 @@ class TicTacToe {
             };
 
             if ((x >= square.xPos && x <= square.xPos + square.width) && (y >= square.yPos && y <= square.yPos + square.height)) {
-                console.log(square.actor);
-                console.log(this.actors[this.turn]);
                 square.actor = this.actors[this.turn];
-                console.log(square.actor);
                 square.draw();
-
                 this.turn = (this.turn + 1) % this.actors.length;
+
+                this.label.textContent = `${this.actors[this.turn]}'s turn`;
             };
         };
 
@@ -119,17 +116,32 @@ class TicTacToe {
                     this.ctx.textAlign = "center";
                     this.ctx.fillText(s1.actor + " wins!", this.canvas.width / 2, this.canvas.height / 2);
                     this.ctx.closePath();
+
+                    this.label.style.display = "none";
+                    this.resetButton.style.display = "block";
                 };
             };
         };
 
         if (!this.gameOver && this.squares.filter(square => square.actor === null).length === 0) {
             this.gameOver = true;
+            this.ctx.fillStyle = "red";
             this.ctx.font = "30px Arial";
             this.ctx.textAlign = "center";
             this.ctx.fillText("Draw!", this.canvas.width / 2, this.canvas.height / 2);
         };
     };
+
+    reset() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.squares.forEach(square => square.actor = null);
+        this.squares.forEach(square => square.draw());
+        this.turn = 0;
+        this.gameOver = false;
+        this.resetButton.style.display = "none";
+        this.label.textContent = `${this.actors[this.turn]}'s turn`;
+        this.label.style.display = "block";
+    };
 };
 
-const game = new TicTacToe("game-board");
+const game = new TicTacToe("game-board", "cur-player", "reset-game");
