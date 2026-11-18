@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Experimenting Site</title>
+        <link rel="stylesheet" href="styles/general-styles.css" />
+        <link rel="stylesheet" href="styles/home-page-styles.css" />
+        <link rel="stylesheet" href="styles/cards-creation-deletion-page-styles.css" />
+        <link rel="stylesheet" href="styles/cards-filtering-page.css" />
+        <link rel="stylesheet" href="styles/algorithms-page-styles.css" />
+        <link rel="stylesheet" href="styles/recursion-page-styles.css" />
+        <link rel="stylesheet" href="styles/tic-tac-toe-page-styles.css" />
+        <script src="scripts/home-page-script.js" defer></script>
+        <script src="scripts/show-hide-divs.js" defer></script>
+        <script src="scripts/show-available-cards-script.js" defer></script>
+        <script src="scripts/card-creation-deletion-script.js" defer></script>
+        <script src="scripts/show-10-cards.js" defer></script>
+        <script src="scripts/enable-find-card.js" defer></script>
+        <script src="scripts/filter-cards.js" defer></script>
+        <script src="scripts/cards-sorting-script.js" defer></script>
+        <script src="scripts/cards-reversing-script.js" defer></script>
+        <script src="scripts/algorithms-scripts.js" defer></script>
+        <script src="scripts/encryption-script.js" defer></script>
+        <script src="scripts/decryption-script.js" defer></script>
+        <script src="scripts/recursion-scripts.js" defer></script>
+        <script src="scripts/game-scripts.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="separator">
+                <div id="page-title">
+                    <h1>JS first website</h1>
+                </div>
+                <div id="header-navigation">
+                    <nav>
+                        <ul>
+                            <li><button id="show-home-page">Home</button></li>
+                            <li><button id="show-cards-creation-deletion-page">Cards creation/deletion</button></li>
+                            <li><button id="show-cards-filtering-page">Cards filtering</button></li>
+                            <li><button id="show-algorithms-page">Algorithms</button></li>
+                            <li><button id="show-recursion-page">Recursion</button></li>
+                            <li><button id="show-tic-tac-toe-page">Tic-Tac-Toe</button></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div id="home-page">
+            <h1>WELCOME!</h1>
+            <main>
+                <div id="current-time">
+                    Current time: <span id="clock"></span>.
+                </div>
+                <div id="current-date">
+                    Current date: <span id="date"></span>.
+                </div>
+                <div id="greeting-message">
+                    Greetings! Welcome to my first JavaScript site!
+                </div>
+            </main>
+        </div>
+
+        <div id="cards-creation-deletion-page">
+            <h1>Create/Delete cards</h1>
+            <form>
+                <input type="text" id="full-name" placeholder="Full Name" />
+                <input type="email" id="email" placeholder="Email address" required />
+                <button type="button">Create card</button>
+            </form>
+            <p id="error-message-creation"></p>
+            <section id="all-cards"></section>
+        </div>
+
+        <div id="cards-filtering-page">
+            <h1>Filter cards</h1>
+            <div id="filtering-menu">
+                <select id="filter-select">
+                    <option value="age">Age</option>
+                    <option value="name">Name</option>
+                    <option value="admin">Admin</option>
+                    <option value="grades">Grades</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" id="search-bar" name="search-bar"  />
+                <button type="button" id="find" disabled>Find</button>
+                <button type="button" id="reset">Reset</button>
+                <button type="button" id="sort">Sort</button>
+                <button type="button" id="reverse">Reverse</button>
+            </div>
+            <section id="ten-cards"></section>
+        </div>
+
+        <div id="algorithms-page">
+            <h1>Algorithms</h1>
+            <div class="separator">
+                <section id="algorithms-1">
+                    <h2>Example algorithms:</h2>
+                    <div class="separator">
+                        <label>Choose your algorithm:</label>
+                        <select id="available-algorithms">
+                            <option value="palindrome">Palindrome</option>
+                            <option value="prime">Prime</option>
+                            <option value="password">Password</option>
+                            <option value="unique">Unique</option>
+                        </select>
+                        <input type="text" name="algorithm-input" id="algorithm-input" />
+                    </div>
+                </section>
+                <section id="algorithms-2">
+                    <h2>Encryption/Decryption algorithms:</h2>
+                    <div id="encrypt-decrypt-section" class="separator">
+                        <label id="encrypted-decrypted-data"></label>
+                        <input type="text" id="encryption-decryption-input-string" name="encryption-decryption-input-string" placeholder="Text" />
+                        <input type="number" id="number-of-shiftings" name="number-of-shiftings" placeholder="Number" />
+                        <button type="button" id="encrypt">Encrypt</button>
+                        <button type="button" id="decrypt">Decrypt</button>
+                    </div>
+                    <label id="error-label"></label>
+                </section>
+            </div>
+        </div>
+
+        <div id="recursion-page">
+            <h1>Recursion</h1>
+            <div class="separator">
+                <input type="number" id="recursion-page-input" name="recursion-page-input" placeholder="Enter a number" />
+                <select id="algorithm-selection">
+                    <option value="factorial">Factorial</option>
+                    <option value="fibonacci">Fibonacci</option>
+                </select>
+                <select id="calculation-type">
+                    <option value="iterative">Iterative</option>
+                    <option value="recursive">Recursive</option>
+                </select>
+            </div>
+            <label id="calculation-result"></label>
+        </div>
+
+        <div id="tic-tac-toe-page">
+            <h1 id="game-header">Tic-Tac-Toe</h1>
+            <label id="cur-player"></label>
+            <div id="tic-tac-toe-game">
+                <canvas id="game-board"></canvas>
+            </div>
+            <button id="reset-game">Reset game</button>
+        </div>
+    </body>
+</html>

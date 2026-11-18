@@ -1,0 +1,35 @@
+#tic-tac-toe-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#tic-tac-toe-page h1 {
+    color: rgb(65, 38, 38);
+    margin-bottom: 10px;
+}
+
+#tic-tac-toe-page label {
+    font-size: 1.2em;
+}
+
+#tic-tac-toe-page #tic-tac-toe-game #game-board {
+    border: 2px solid black;
+    width: 700px;
+    height: 300px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#tic-tac-toe-page #reset-game {
+    font: 1.2em / 1.5 system-ui;
+    display: flex;
+    margin: auto;
+}

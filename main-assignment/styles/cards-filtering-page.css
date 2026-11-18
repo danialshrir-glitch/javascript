@@ -1,0 +1,21 @@
+#cards-filtering-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#cards-filtering-page h1 {
+    color: rgb(65, 38, 38);
+}
+
+#cards-filtering-page #filtering-menu {
+    margin-bottom: 10px;
+}
+
+#cards-filtering-page section {
+    display: flex;
+    flex-wrap: wrap;
+}
