@@ -27,11 +27,7 @@ const enableButton = () => {
     const userInput = searchBarInput.value;
 
     const allowed = isAllowed(chosenValue, userInput);
-    if (allowed) {
-        findButton.disabled = false;
-    } else {
-        findButton.disabled = true;
-    }
+    findButton.disabled = !allowed;
 }
 
 enableButton();
