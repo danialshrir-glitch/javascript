@@ -1,36 +1,52 @@
-const MIN_PASSWORD_LENGTH = 8;
-const MAX_CHAR = 256;
+const minPasswordLength = 8;
+const maxChar = 256;
 
 const availableAlgorithms = document.getElementById("available-algorithms");
 const userInput = document.getElementById("algorithm-input");
 
-const isPalindrome = str => {
-    return str === str.split("").reverse().join("");
-}
+const Algorithms = Object.freeze({
+    PALINDROME: "palindrome",
+    PRIME: "prime",
+    PASSWORD: "password",
+    UNIQUE: "unique",
+});
 
-const isPrime = num => {
+const Colors = Object.freeze({
+    RED: "red",
+    GREEN: "green",
+});
+
+const isPalindrome = (str) => {
+    return str === str.split("").reverse().join("");
+};
+
+const isPrime = (num) => {
     const boundary = Math.floor(Math.sqrt(num));
+
     for (let i = 2; i <= boundary; i++) {
         if (num % i === 0) {
             return false;
-        };
-    };
-    return num > 1;
-}
+        }
+    }
 
-const isValidPassword = password => {
+    return num > 1;
+};
+
+const isValidPassword = (password) => {
     const oneUpperOneLowerOneDigit = /[a-zA-Z0-9]/;
     const oneSpecialChar = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
-    return password.length >= MIN_PASSWORD_LENGTH && oneUpperOneLowerOneDigit.test(password) && oneSpecialChar.test(password);
-}
+    return (
+        password.length >= minPasswordLength && oneUpperOneLowerOneDigit.test(password) && oneSpecialChar.test(password)
+    );
+};
 
-const isUnique = str => {
-    if (str.length > MAX_CHAR) {
+const isUnique = (str) => {
+    if (str.length > maxChar) {
         return false;
     }
 
-    const chars = new Array(MAX_CHAR);
-    for (let i = 0; i < MAX_CHAR; i++) {
+    const chars = new Array(maxChar);
+    for (let i = 0; i < maxChar; i++) {
         chars[i] = false;
     }
 
@@ -43,51 +59,31 @@ const isUnique = str => {
 
         chars[index] = true;
     }
-    
+
     return true;
-}
+};
+
+const isValid = (algorithm, input) => {
+    switch (algorithm) {
+        case Algorithms.PALINDROME:
+            return isPalindrome(input);
+        case Algorithms.PRIME:
+            return !isNaN(Number(input)) && isPrime(Number(input));
+        case Algorithms.PASSWORD:
+            return isValidPassword(input);
+        case Algorithms.UNIQUE:
+            return isUnique(input);
+        default:
+            return false;
+    }
+};
 
 const checkAlgorithm = () => {
     const chosenAlgorithm = availableAlgorithms.value;
     const input = userInput.value;
 
-    switch (chosenAlgorithm) {
-        case "palindrome":
-            if (isPalindrome(input)) {
-                userInput.style.color = "green";
-            } else {
-                userInput.style.color = "red";
-            }
-            return;
-        case "prime":
-            if (isNaN(Number(input))) {
-                userInput.style.color = "red";
-            }
-            const numToCheck = Number(input);
-            if (isPrime(numToCheck)) {
-                userInput.style.color = "green";
-            } else {
-                userInput.style.color = "red";
-            }
-            return;
-        case "password":
-            if (isValidPassword(input)) {
-                userInput.style.color = "green";
-            } else {
-                userInput.style.color = "red";
-            }
-            return;
-        case "unique":
-            if (isUnique(input)) {
-                userInput.style.color = "green";
-            } else {
-                userInput.style.color = "red";
-            }
-            return;
-        default:
-            console.log("");
-    }
-}
+    userInput.style.color = isValid(chosenAlgorithm, input) ? Colors.GREEN : Colors.RED;
+};
 
 availableAlgorithms.addEventListener("change", checkAlgorithm);
 userInput.addEventListener("input", checkAlgorithm);
