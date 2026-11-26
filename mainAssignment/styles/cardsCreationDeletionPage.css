@@ -1,0 +1,51 @@
+#cards-creation-deletion-page {
+    text-align: center;
+    min-width: 100%;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#cards-creation-deletion-page h1 {
+    color: rgb(65, 38, 38);
+}
+
+#cards-creation-deletion-page form {
+    margin-bottom: 10px;
+}
+
+#cards-creation-deletion-page p #error-message-creation {
+    display: none;
+}
+
+#cards-creation-deletion-page section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#cards-creation-deletion-page section .card {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    inline-size: fit-content;
+    block-size: fit-content;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#cards-creation-deletion-page section button .del {
+    border: 2px solid black;
+    border-radius: 10px;
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: transparent;
+    display: none;
+}
