@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>JavaScript Experimenting Site</title>
         <link rel="stylesheet" href="styles/general.css" />
         <link rel="stylesheet" href="styles/homePage.css" />
@@ -50,15 +50,9 @@
         <div id="home-page">
             <h1>WELCOME!</h1>
             <main>
-                <div id="current-time">
-                    Current time: <span id="clock"></span>.
-                </div>
-                <div id="current-date">
-                    Current date: <span id="date"></span>.
-                </div>
-                <div id="greeting-message">
-                    Greetings! Welcome to my first JavaScript site!
-                </div>
+                <div id="current-time">Current time: <span id="clock"></span>.</div>
+                <div id="current-date">Current date: <span id="date"></span>.</div>
+                <div id="greeting-message">Greetings! Welcome to my first JavaScript site!</div>
             </main>
         </div>
 
@@ -83,7 +77,7 @@
                     <option value="grades">Grades</option>
                     <option value="address">Address</option>
                 </select>
-                <input type="text" id="search-bar" name="search-bar"  />
+                <input type="text" id="search-bar" name="search-bar" />
                 <button type="button" id="find" disabled>Find</button>
                 <button type="button" id="reset">Reset</button>
                 <button type="button" id="sort">Sort</button>
@@ -112,7 +106,12 @@
                     <h2>Encryption/Decryption algorithms:</h2>
                     <div id="encrypt-decrypt-section" class="separator">
                         <label id="encrypted-decrypted-data"></label>
-                        <input type="text" id="encryption-decryption-input-string" name="encryption-decryption-input-string" placeholder="Text" />
+                        <input
+                            type="text"
+                            id="encryption-decryption-input-string"
+                            name="encryption-decryption-input-string"
+                            placeholder="Text"
+                        />
                         <input type="number" id="number-of-shiftings" name="number-of-shiftings" placeholder="Number" />
                         <button type="button" id="encrypt">Encrypt</button>
                         <button type="button" id="decrypt">Decrypt</button>
@@ -125,7 +124,12 @@
         <div id="recursion-page">
             <h1>Recursion</h1>
             <div class="separator">
-                <input type="number" id="recursion-page-input" name="recursion-page-input" placeholder="Enter a number" />
+                <input
+                    type="number"
+                    id="recursion-page-input"
+                    name="recursion-page-input"
+                    placeholder="Enter a number"
+                />
                 <select id="algorithm-selection">
                     <option value="factorial">Factorial</option>
                     <option value="fibonacci">Fibonacci</option>

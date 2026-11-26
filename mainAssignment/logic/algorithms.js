@@ -1,16 +1,13 @@
 const minPasswordLength = 8;
 const maxChar = 256;
-
 const availableAlgorithms = document.getElementById("available-algorithms");
 const userInput = document.getElementById("algorithm-input");
-
 const Algorithms = Object.freeze({
     PALINDROME: "palindrome",
     PRIME: "prime",
     PASSWORD: "password",
     UNIQUE: "unique",
 });
-
 const Colors = Object.freeze({
     RED: "red",
     GREEN: "green",
@@ -35,6 +32,7 @@ const isPrime = (num) => {
 const isValidPassword = (password) => {
     const oneUpperOneLowerOneDigit = /[a-zA-Z0-9]/;
     const oneSpecialChar = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/;
+
     return (
         password.length >= minPasswordLength && oneUpperOneLowerOneDigit.test(password) && oneSpecialChar.test(password)
     );
@@ -81,7 +79,6 @@ const isValid = (algorithm, input) => {
 const checkAlgorithm = () => {
     const chosenAlgorithm = availableAlgorithms.value;
     const input = userInput.value;
-
     userInput.style.color = isValid(chosenAlgorithm, input) ? Colors.GREEN : Colors.RED;
 };
 
